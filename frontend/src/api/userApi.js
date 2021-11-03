@@ -11,7 +11,7 @@ export const login = ({ username, password }) => {
 export const register = ({ username, password }) => {
   return request({
     method: "POST",
-    url: "/api/user",
+    url: "/api/user/",
     data: { username, password },
   });
 };

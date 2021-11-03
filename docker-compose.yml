@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./frontend
+    command: yarn start
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_BACKEND_URL: backend
+  backend:
+    build: ./backend
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"

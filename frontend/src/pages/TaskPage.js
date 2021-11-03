@@ -43,13 +43,13 @@ function TaskPage(props) {
   // redux calling
   const {
     data: tags,
-    loading: tagLoading,
-    errors: tagErrors,
+    // loading: tagLoading,
+    // errors: tagErrors,
   } = useSelector((state) => state.tags);
   const {
     data: tasks,
-    loading: taskLoading,
-    errors: taskErrors,
+    // loading: taskLoading,
+    // errors: taskErrors,
   } = useSelector((state) => state.tasks);
 
   // tag modal

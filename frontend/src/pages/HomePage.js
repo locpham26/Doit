@@ -15,6 +15,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { VisibilityOutlined, VisibilityOffOutlined } from "@material-ui/icons";
 import LandingImage from "../assets/images/background.jpg";
 import { useHistory } from "react-router-dom";
+import { register } from "../api/userApi";
 
 const useStyles = makeStyles((theme) => ({
   containerStyle: {
@@ -56,9 +57,24 @@ function HomePage(props) {
   useEffect(() => {
     if (user) history.push("/task");
   });
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginUser({ username: username, password: password }));
+    try {
+      const respose = await register({
+        username: username,
+        password: password,
+      });
+      console.log(respose);
+      dispatch(loginUser({ username: username, password: password }));
+    } catch (err) {
+      console.log(err.response);
+      if (
+        err.response.status === 400 &&
+        err.response.data.username[0] ===
+          "app user with this username already exists."
+      )
+        alert(err.response.data.username[0]);
+    }
   };
   return (
     <Container

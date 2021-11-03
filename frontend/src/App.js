@@ -70,7 +70,7 @@ const fallbackContent = (
       height: "100%",
     }}
   >
-    <img src={Spin} />
+    <img src={Spin} alt="spin" />
   </div>
 );
 

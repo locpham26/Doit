@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    command: nginx -g daemon off
+    ports:
+      - 80:3000
+    environment:
+      REACT_APP_BACKEND_URL: backend
+    restart: unless-stopped
+  backend:
+    build: ./backend
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    restart: unless-stopped

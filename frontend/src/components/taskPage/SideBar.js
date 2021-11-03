@@ -14,8 +14,8 @@ import {
   Today,
   DateRange,
   Label,
-  ExpandLess,
-  ExpandMore,
+  // ExpandLess,
+  // ExpandMore,
   PriorityHigh,
   ChevronLeft,
   Stop,
@@ -25,7 +25,7 @@ import {
 } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu";
 
 const drawerWidth = 240;
@@ -115,7 +115,7 @@ function SideBar({
   const { data: priorityList } = useSelector((state) => state.priority);
   const classes = useStyles();
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const filterTasks = ({ priority, tag }) => {
     if (tag === selectedTag) setSelectedTag(null);
